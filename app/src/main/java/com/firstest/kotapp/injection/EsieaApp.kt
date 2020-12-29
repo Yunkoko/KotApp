@@ -9,7 +9,7 @@ class EsieaApp  : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@EsieaApp)
-            modules(presentationModule)
+            modules(presentationModule, domainModule, dataModule)
         }
     }
 }
