@@ -1,6 +1,6 @@
-package com.firstest.kotapp.presentation.main
+package com.firstest.kotapp.presentation.login
 
 sealed class SignInStatus
 
 data class SignInSuccess(val username: String, val password: String) : SignInStatus()
-object SignInnError : SignInStatus()
+object SignInError : SignInStatus()

@@ -7,12 +7,14 @@ import com.firstest.kotapp.data.local.DataBaseDao
 import com.firstest.kotapp.data.repository.UserRepository
 import com.firstest.kotapp.domain.usecase.CreateUserUseCase
 import com.firstest.kotapp.domain.usecase.getUserUseCase
-import com.firstest.kotapp.presentation.main.MainViewModel
+import com.firstest.kotapp.presentation.login.LoginViewModel
+import com.firstest.kotapp.presentation.signin.SignInViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val presentationModule = module {
-    factory { MainViewModel(get(), get()) }
+    factory { LoginViewModel(get(), get()) }
+    factory { SignInViewModel(get(), get()) }
 }
 
 val domainModule = module{

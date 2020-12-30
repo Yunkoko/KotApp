@@ -1,28 +1,33 @@
-package com.firstest.kotapp.presentation.main
+package com.firstest.kotapp.presentation.signin
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.firstest.kotapp.domain.entity.User
 import com.firstest.kotapp.domain.usecase.CreateUserUseCase
 import com.firstest.kotapp.domain.usecase.getUserUseCase
+import com.firstest.kotapp.presentation.login.SignInError
+import com.firstest.kotapp.presentation.login.SignInStatus
+import com.firstest.kotapp.presentation.login.SignInSuccess
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SignInViewModel(private val createUserUseCase: CreateUserUseCase, private val getUserUseCase: getUserUseCase) : ViewModel(){
 
-    val loginLiveData: MutableLiveData<LoginStatus> = MutableLiveData()
+    val signInLiveData: MutableLiveData<SignInStatus> = MutableLiveData()
 
     fun onClickSignIn(username: String, password: String){
         viewModelScope.launch(Dispatchers.IO) {
-            val user = getUserUseCase.invoke(username, password)
-            val loginStatus = if(user != null && password != null){
-                LoginSuccess(user.username, user.password)
+            val signInStatus = if(username != "" && password != ""){
+                val user = User(username,password)
+                createUserUseCase.invoke(user)
+                SignInSuccess(username, password)
             } else {
-                LoginError
+                SignInError
             }
             withContext(Dispatchers.Main){
-                loginLiveData.value = loginStatus
+                signInLiveData.value = signInStatus
             }
         }
     }

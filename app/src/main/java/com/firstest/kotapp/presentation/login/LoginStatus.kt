@@ -1,4 +1,4 @@
-package com.firstest.kotapp.presentation.main
+package com.firstest.kotapp.presentation.login
 
 sealed class LoginStatus
 
