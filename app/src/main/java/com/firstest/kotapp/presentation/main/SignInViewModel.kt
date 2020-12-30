@@ -9,11 +9,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainViewModel(private val createUserUseCase: CreateUserUseCase, private val getUserUseCase: getUserUseCase) : ViewModel(){
+class SignInViewModel(private val createUserUseCase: CreateUserUseCase, private val getUserUseCase: getUserUseCase) : ViewModel(){
 
     val loginLiveData: MutableLiveData<LoginStatus> = MutableLiveData()
 
-    fun onClickLogin(username: String, password: String){
+    fun onClickSignIn(username: String, password: String){
         viewModelScope.launch(Dispatchers.IO) {
             val user = getUserUseCase.invoke(username, password)
             val loginStatus = if(user != null && password != null){
