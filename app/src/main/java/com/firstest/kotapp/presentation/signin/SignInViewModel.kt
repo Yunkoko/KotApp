@@ -19,7 +19,8 @@ class SignInViewModel(private val createUserUseCase: CreateUserUseCase, private 
 
     fun onClickSignIn(username: String, password: String){
         viewModelScope.launch(Dispatchers.IO) {
-            val signInStatus = if(username != "" && password != ""){
+            val userCheck = getUserUseCase.invoke(username, password)
+            val signInStatus = if(username != "" && password != "" && userCheck == null){
                 val user = User(username,password)
                 createUserUseCase.invoke(user)
                 SignInSuccess(username, password)

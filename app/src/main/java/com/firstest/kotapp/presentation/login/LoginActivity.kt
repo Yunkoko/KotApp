@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.firstest.kotapp.R
+import com.firstest.kotapp.presentation.main.MainActivity
 import com.firstest.kotapp.presentation.signin.SignInActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_login.*
@@ -23,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginLiveData.observe(this, Observer {
             when(it){
                 is LoginSuccess -> {
-
+                    startMainActivity()
                 }
                 LoginError -> {
                     MaterialAlertDialogBuilder(this)
@@ -46,6 +47,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun startSignInActivity() {
         val intent = Intent(this, SignInActivity::class.java)
+        this.startActivity(intent)
+    }
+
+    private fun startMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
         this.startActivity(intent)
     }
 }

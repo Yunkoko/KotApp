@@ -30,7 +30,7 @@ class SignInActivity : AppCompatActivity(){
                 SignInError -> {
                     MaterialAlertDialogBuilder(this)
                         .setTitle("ERROR")
-                        .setMessage("PLease fill the fields")
+                        .setMessage("Account already exist or fields aren't filled")
                         .setPositiveButton("OK"){
                                 dialog, which ->  dialog.dismiss()
                         }
