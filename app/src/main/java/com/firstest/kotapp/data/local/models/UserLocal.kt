@@ -7,15 +7,16 @@ import com.firstest.kotapp.domain.entity.User
 
 @Entity
 data class UserLocal(
-    @ColumnInfo(name = "email") val email: String
+    @ColumnInfo(name = "username") val username: String,
+    @ColumnInfo(name = "password") val password: String
 ){
     @PrimaryKey(autoGenerate = true) var uid: Int? = null
 }
 
 fun User.toData() : UserLocal {
-    return UserLocal(email = email)
+    return UserLocal(username = username, password = password)
 }
 
 fun UserLocal.toEntity() : User {
-    return User(email = email)
+    return User(username = username, password = password)
 }
