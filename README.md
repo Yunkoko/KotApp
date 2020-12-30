@@ -38,7 +38,7 @@ Before trying it please be sure to:
   - Creating a new account by giving a new username and a new password.                                  
     ![screen2](https://user-images.githubusercontent.com/48058308/103381916-770d5880-4aed-11eb-9884-bbf9270ddf53.PNG)
   
-  - If the account already exist or a field isn't filled then an error message appears.
+  - If the account already exist or a field isn't filled then an error message appears.                        
     ![screen3](https://user-images.githubusercontent.com/48058308/103382103-031f8000-4aee-11eb-96a1-17666627fc63.PNG)
   
 ###  List display
